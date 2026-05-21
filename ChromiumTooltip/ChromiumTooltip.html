@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chromium Global Tooltip Matrix</title>
+  <script type="module" src="cr-tooltip.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 60px;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      background: #6750a4;
+      color: white;
+    }
+
+    .btn-tonal { background: #e8def8; color: #1d192b; }
+    .btn-error { background: #b3261e; color: white; }
+  </style>
+</head>
+<body>
+
+  <h3>Hover or Tab Focus to View Components Tooltips</h3>
+
+  <div class="row">
+    <!-- 1. TEXT VARIANT -->
+    <button class="btn" 
+            data-tooltip="Saves structural modifications instantly" 
+            data-tooltip-variant="text">
+      Standard Action
+    </button>
+
+    <!-- 2. TONAL VARIANT -->
+    <button class="btn btn-tonal" 
+            data-tooltip="Workspace storage buffer limits: 84%" 
+            data-tooltip-variant="tonal">
+      Storage Status
+    </button>
+
+    <!-- 3. TERTIARY / ERROR VARIANT -->
+    <button class="btn btn-error" 
+            data-tooltip="Warning: This action permanently purges data logs!" 
+            data-tooltip-variant="error">
+      Purge Account
+    </button>
+  </div>
+
+</body>
+</html>
