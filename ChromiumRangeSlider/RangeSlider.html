@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CR Range Slider Context</title>
+  <script type="module" src="cr-range-slider.js"></script>
+  <style>
+    body { padding: 40px; background: #fff; font-family: sans-serif; }
+    .readout { margin-top: 16px; font-size: 14px; font-weight: 500; color: #1d1b20; }
+  </style>
+</head>
+<body>
+
+  <!-- Using the fully encapsulated range node slider -->
+  <cr-range-slider min="0" max="100" value-min="20" value-max="80" id="myRangeSlider"></cr-range-slider>
+
+  <div class="readout">
+    Current Range Bounds: <span id="outMin">20</span> - <span id="outMax">80</span>
+  </div>
+
+  <script>
+    const slider = document.getElementById('myRangeSlider');
+    const outMin = document.getElementById('outMin');
+    const outMax = document.getElementById('outMax');
+
+    slider.addEventListener('cr-range-slider-changed', (e) => {
+      outMin.textContent = e.detail.valueMin;
+      outMax.textContent = e.detail.valueMax;
+    });
+  </script>
+
+</body>
+</html>
