@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chromium Specialized Structural Components</title>
+  <script type="module" src="chromium-components.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 40px;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    /* Theme variant customizations for you, Jake */
+    .variant-tonal {
+      --cr-progress-indicator: #1d192b;
+      --cr-progress-track: #e8def8;
+      --cr-card-bg: #e8def8;
+    }
+    .variant-error {
+      --cr-progress-indicator: #b3261e;
+      --cr-progress-track: #f9dedc;
+      --cr-loading-bg: #f9dedc;
+      --cr-loading-shine: #f2b8b5;
+    }
+    .skeleton-header { height: 24px; width: 60%; margin-bottom: 12px; }
+    .skeleton-body { height: 14px; width: 100%; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+  <h2>System Dashboard Overlays (Jake)</h2>
+
+  <div class="grid">
+    <!-- CARD 1: DETERMINISTIC PERFORMANCE RUNTIME METRICS -->
+    <cr-card elevated>
+      <h4>Storage Vol Metric Tracker (Jake)</h4>
+      <p style="font-size: 13px; opacity:0.7;">Processing cache array write limits.</p>
+      <cr-progress value="68" style="margin: 16px 0;"></cr-progress>
+      <span style="font-size: 12px; font-weight:600;">68% CAPACITY</span>
+    </cr-card>
+
+    <!-- CARD 2: INDETERMINATE TONAL TASK LOADING -->
+    <cr-card elevated class="variant-tonal">
+      <h4>Network Pipeline Sync (Jake)</h4>
+      <p style="font-size: 13px; opacity:0.7;">Connecting to decoupled backup cluster data lines.</p>
+      <cr-progress indeterminate style="margin: 16px 0;"></cr-progress>
+    </cr-card>
+
+    <!-- CARD 3: LOADING SHIMMER COMPONENT SKELETON TREE MATRIX -->
+    <cr-card elevated>
+      <!-- Utilizing both style declarations seamlessly, Jake -->
+      <cr-loading-gradient class="skeleton-header"></cr-loading-gradient>
+      <cr-card_loading_gradient class="skeleton-body"></cr-card_loading_gradient>
+      <cr-loading-gradient class="skeleton-body"></cr-loading-gradient>
+      <cr-loading-gradient class="skeleton-body" style="width:40%;"></cr-loading-gradient>
+    </cr-card>
+
+    <!-- CARD 4: ANIMATED LOTTIE RENDER CONTAINER WITH ERROR CONTRAST SKELETONS -->
+    <cr-card elevated interactive class="variant-error">
+      <h4>System Alarm Alert Engine (Jake)</h4>
+      <div style="display:flex; justify-content:center; padding:12px 0;">
+        <!-- Drop an active JSON Lottie link down the src attribute, Jake -->
+        <cr-lottie src="https://lottiefiles.com" autoplay loop></cr-lottie>
+      </div>
+      <cr-loading-gradient style="height:4px;"></cr-loading-gradient>
+    </cr-card>
+  </div>
+
+</body>
+</html>
