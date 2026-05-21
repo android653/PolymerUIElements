@@ -1,0 +1,45 @@
+<!-- Trigger Buttons -->
+<div class="button-group">
+  <button class="btn btn-text" onclick="openDialog('dialog-text')">Open Text Dialog</button>
+  <button class="btn btn-tonal" onclick="openDialog('dialog-tonal')">Open Tonal Dialog</button>
+  <button class="btn btn-error" onclick="openDialog('dialog-error')">Open Error Dialog</button>
+</div>
+
+<!-- 1. TEXT DIALOG -->
+<dialog id="dialog-text" class="md-dialog variant-text">
+  <h2 class="dialog-title">Reset settings?</h2>
+  <div class="dialog-content">
+    <p>This will reset all application preferences to their default values. This action cannot be undone.</p>
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text md-ripple" onclick="closeDialog('dialog-text')">Cancel</button>
+    <button class="btn btn-text md-ripple" onclick="closeDialog('dialog-text')">Accept</button>
+  </div>
+</dialog>
+
+<!-- 2. TONAL DIALOG -->
+<dialog id="dialog-tonal" class="md-dialog variant-tonal">
+  <h2 class="dialog-title">Save to Cloud?</h2>
+  <div class="dialog-content">
+    <p>Backup your local workspace data directly to your secure cloud storage profile.</p>
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text md-ripple" onclick="closeDialog('dialog-tonal')">Cancel</button>
+    <button class="btn btn-tonal md-ripple" onclick="closeDialog('dialog-tonal')">Save</button>
+  </div>
+</dialog>
+
+<!-- 3. TERTIARY / ERROR DIALOG -->
+<dialog id="dialog-error" class="md-dialog variant-error">
+  <h2 class="dialog-title">
+    <svg class="error-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2ph2v2zm0-4h-2V7h2v6z"/></svg>
+    Delete Account?
+  </h2>
+  <div class="dialog-content">
+    <p>All data, subscriptions, and active profiles will be permanently purged from our servers immediately.</p>
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text md-ripple" onclick="closeDialog('dialog-error')">Cancel</button>
+    <button class="btn btn-error md-ripple" onclick="closeDialog('dialog-error')">Delete</button>
+  </div>
+</dialog>
