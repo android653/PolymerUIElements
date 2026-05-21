@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chromium List Component Tree Variation Matrix</title>
+  <script type="module" src="cr-list.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 40px;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .matrix-section {
+      max-width: 440px;
+    }
+
+    h3 { margin: 0 0 12px 0; font-size: 14px; color: #1d1b20; text-transform: uppercase; }
+    
+    .item-title { font-weight: 500; font-size: 14px; }
+    .item-sub { font-size: 12px; opacity: 0.7; }
+
+    /* --- Theme Token Configuration Sets, Jake --- */
+    .theme-text {
+      --cr-list-wrapper-bg: #ffffff;
+      --cr-list-primary-marker: #6750a4; /* MD3 Primary Match */
+    }
+
+    .theme-tonal {
+      --cr-list-wrapper-bg: #e8def8; /* Tonal Container Base Tint */
+      --cr-list-item-color: #1d192b;
+      --cr-list-item-hover-bg: rgba(29, 25, 43, 0.06);
+      --cr-list-item-focus-bg: rgba(29, 25, 43, 0.12);
+      --cr-list-primary-marker: #1d192b;
+    }
+
+    .theme-error {
+      --cr-list-wrapper-bg: #f9dedc; /* Error Container Base Tint */
+      --cr-list-item-color: #410e0b;
+      --cr-list-item-hover-bg: rgba(179, 38, 30, 0.06);
+      --cr-list-item-focus-bg: rgba(179, 38, 30, 0.12);
+      --cr-list-primary-marker: #b3261e; /* Tertiary/Error Crimson */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. TEXT VARIANT -->
+  <div class="matrix-section">
+    <h3>Standard Text Navigation List (Jake)</h3>
+    <cr-list class="theme-text">
+      <cr-list-item>
+        <div class="item-title">Profile Sync Configurations</div>
+        <div class="item-sub">Manage saved data pipelines and clouds</div>
+      </cr-list-item>
+      <cr-list-item>
+        <div class="item-title">Hardware Acceleration</div>
+        <div class="item-sub">Toggle GPU processing nodes</div>
+      </cr-list-item>
+    </cr-list>
+  </div>
+
+  <!-- 2. TONAL VARIANT -->
+  <div class="matrix-section">
+    <h3>Tonal Matrix Section (Jake)</h3>
+    <cr-list class="theme-tonal">
+      <cr-list-item>
+        <div class="item-title">Active Log Session</div>
+        <div class="item-sub">Tracking system buffer capacities</div>
+        <span slot="meta">84% FULL</span>
+      </cr-list-item>
+      <cr-list-item>
+        <div class="item-title">Storage Partitioning</div>
+        <div class="item-sub">Allocated virtual cache spaces</div>
+        <span slot="meta">v2.4.1</span>
+      </cr-list-item>
+    </cr-list>
+  </div>
+
+  <!-- 3. TERTIARY / ERROR VARIANT -->
+  <div class="matrix-section">
+    <h3>Critical Security System Paths (Jake)</h3>
+    <cr-list class="theme-error">
+      <cr-list-item>
+        <div class="item-title">Purge All Operational Memory</div>
+        <div class="item-sub">Instantly strips local runtime snapshots</div>
+        <span slot="meta">WARN</span>
+      </cr-list-item>
+      <cr-list-item disabled>
+        <div class="item-title">Hard Drive Formatting Override</div>
+        <div class="item-sub">Root authorization required</div>
+        <span slot="meta">LOCKED</span>
+      </cr-list-item>
+    </cr-list>
+  </div>
+
+</body>
+</html>
