@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chromium Menu Component Tree Matrix for Jake</title>
+  <script type="module" src="cr-menu.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 40px;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 16px;
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      font-size: 14px;
+      background: #6750a4;
+      color: white;
+    }
+
+    .btn-tonal { background: #e8def8; color: #1d192b; }
+    .btn-error { background: #b3261e; color: white; }
+
+    /* --- Theme Token Configuration Sets, Jake --- */
+    .theme-text {
+      --cr-menu-wrapper-bg: #ffffff;
+      --cr-menu-primary-marker: #6750a4;
+    }
+
+    .theme-tonal {
+      --cr-menu-wrapper-bg: #e8def8; /* Tonal base layout tint */
+      --cr-menu-item-color: #1d192b;
+      --cr-menu-item-hover-bg: rgba(29, 25, 43, 0.06);
+      --cr-menu-item-focus-bg: rgba(29, 25, 43, 0.12);
+      --cr-menu-primary-marker: #1d192b;
+    }
+
+    .theme-error {
+      --cr-menu-wrapper-bg: #f9dedc; /* Critical context theme color */
+      --cr-menu-item-color: #410e0b;
+      --cr-menu-item-hover-bg: rgba(179, 38, 30, 0.06);
+      --cr-menu-item-focus-bg: rgba(179, 38, 30, 0.12);
+      --cr-menu-primary-marker: #b3261e;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Interactive Menu Controls (Jake)</h2>
+  
+  <div class="toolbar">
+    <!-- Action buttons serving as spatial targets, Jake -->
+    <button class="btn" data-menu-trigger onclick="toggleMenu('menuText', this)">Text Actions</button>
+    <button class="btn btn-tonal" data-menu-trigger onclick="toggleMenu('menuTonal', this)">Tonal Options</button>
+    <button class="btn btn-error" data-menu-trigger onclick="toggleMenu('menuError', this)">System Purge</button>
+  </div>
+
+  <!-- 1. STANDARD TEXT MENU -->
+  <cr-menu class="theme-text" id="menuText">
+    <cr-menu-item onclick="action('New Profile')">New Profile File <span slot="shortcut">Ctrl+N</span></cr-menu-item>
+    <cr-menu-item onclick="action('Sync Configuration')">Sync Configuration <span slot="shortcut">Ctrl+S</span></cr-menu-item>
+    <cr-menu-item disabled>Import Cache Log</cr-menu-item>
+  </cr-menu>
+
+  <!-- 2. TONAL VARIANT MENU -->
+  <cr-menu class="theme-tonal" id="menuTonal">
+    <cr-menu-item onclick="action('Buffer Speed')">High Performance Mode</cr-menu-item>
+    <cr-menu-item onclick="action('Density Adjust')">Compact Grid Scaling</cr-menu-item>
+  </cr-menu>
+
+  <!-- 3. TERTIARY / ERROR DANGER CONTEXT MENU -->
+  <cr-menu class="theme-error" id="menuError">
+    <cr-menu-item onclick="action('Purge Active Vol')">Purge Active Vol Memory <span slot="shortcut">⚠️</span></cr-menu-item>
+    <cr-menu-item onclick="action('Hard Format')">Hard Wipe Partition</cr-menu-item>
+  </cr-menu>
+
+  <script>
+    // Global orchestration link to target individual layout instances, Jake
+    function toggleMenu(menuId, buttonEl) {
+      // Close all other open instances first to keep the screen pristine, Jake
+      document.querySelectorAll('cr-menu').forEach(menu => {
+        if (menu.id !== menuId) menu.close();
+      });
+      
+      const targetMenu = document.getElementById(menuId);
+      if (targetMenu.classList.contains('visible')) {
+        targetMenu.close();
+      } else {
+        targetMenu.open(buttonEl);
+      }
+    }
+
+    function action(msg) {
+      console.log(`Jake, executing the context routine: [${msg}]`);
+      document.querySelectorAll('cr-menu').forEach(menu => menu.close());
+    }
+  </script>
+
+</body>
+</html>
