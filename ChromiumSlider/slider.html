@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CR Slider Demonstration</title>
+  <script type="module" src="cr-slider.js"></script>
+  <style>
+    body { padding: 40px; background: #fafafa; font-family: sans-serif; }
+    .display { margin-top: 12px; font-size: 14px; font-weight: bold; color: #333; }
+  </style>
+</head>
+<body>
+
+  <!-- Invoking custom cr element wrapper -->
+  <cr-slider min="0" max="50" value="20" id="my-cr-slider"></cr-slider>
+  
+  <div class="display">Current Value: <span id="output">20</span></div>
+
+  <script>
+    const slider = document.getElementById('my-cr-slider');
+    const output = document.getElementById('output');
+
+    // Listening for the component's unique internal bubble state events
+    slider.addEventListener('cr-slider-value-changed', (e) => {
+      output.textContent = e.detail.value;
+    });
+  </script>
+
+</body>
+</html>
