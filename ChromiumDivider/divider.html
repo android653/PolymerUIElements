@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chromium Divider Demonstration</title>
+  <!-- Load your web component module file -->
+  <script type="module" src="cr-divider.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 40px;
+      background-color: #ffffff;
+      color: #202124;
+    }
+    
+    .settings-row {
+      padding: 16px 0;
+    }
+
+    /* Customizing individual divider instances using exposed custom property tokens */
+    .custom-spacing-divider {
+      --cr-divider-margin: 24px 0;
+    }
+
+    .custom-color-divider {
+      --cr-divider-color: #6750a4; /* MD3 Primary match */
+      --cr-divider-height: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="settings-row">
+    <strong>Profile Settings</strong>
+    <p>Manage your account settings, privacy configurations, and synchronization data logs.</p>
+  </div>
+
+  <!-- Standard implementation mimicking native settings layouts -->
+  <cr-divider></cr-divider>
+
+  <div class="settings-row">
+    <strong>Appearance Options</strong>
+    <p>Adjust font scales, UI scaling densities, and window decoration color tones.</p>
+  </div>
+
+  <!-- Variant with customized margin padding parameters -->
+  <cr-divider class="custom-spacing-divider"></cr-divider>
+
+  <div class="settings-row">
+    <strong>Advanced System Tools</strong>
+    <p>Configure hardware processing parameters, network interfaces, and system proxy pathways.</p>
+  </div>
+
+  <!-- Variant demonstrating layout tracking height and color variable resets -->
+  <cr-divider class="custom-color-divider"></cr-divider>
+
+</body>
+</html>
