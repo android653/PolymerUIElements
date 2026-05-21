@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chromium Radio Variant Matrix for Jake</title>
+  <script type="module" src="cr-radio.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 40px;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .matrix-card {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      max-width: 400px;
+    }
+
+    h3 { margin: 0 0 16px 0; font-size: 15px; color: #1d1b20; }
+
+    /* --- Theme Token Configuration Sets, Jake --- */
+    .variant-text {
+      --cr-radio-border: #78757a;
+      --cr-radio-fill: #6750a4; /* MD3 Primary Match */
+      --cr-radio-ripple: rgba(103, 80, 164, 0.15);
+    }
+
+    .variant-tonal {
+      --cr-radio-border: #49454f;
+      --cr-radio-fill: #1d192b; /* Tonal Container Text Contrast Match */
+      --cr-radio-ripple: rgba(29, 25, 43, 0.12);
+    }
+
+    .variant-error {
+      --cr-radio-border: #ba1a1a;
+      --cr-radio-fill: #b3261e; /* Tertiary/Error Crimson */
+      --cr-radio-ripple: rgba(179, 38, 30, 0.15);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. TEXT THEME MATRIX -->
+  <div class="matrix-card">
+    <h3>Standard Text Option Set (Jake)</h3>
+    <cr-radio-group class="variant-text" id="groupText">
+      <cr-radio-button value="opt1" checked>Default Selection</cr-radio-button>
+      <cr-radio-button value="opt2">Secondary Preference</cr-radio-button>
+    </cr-radio-group>
+  </div>
+
+  <!-- 2. TONAL THEME MATRIX -->
+  <div class="matrix-card">
+    <h3>High-Contrast Tonal Options (Jake)</h3>
+    <cr-radio-group class="variant-tonal" id="groupTonal">
+      <cr-radio-button value="tonal1" checked>Low Processing Footprint</cr-radio-button>
+      <cr-radio-button value="tonal2">High Density Workspace</cr-radio-button>
+    </cr-radio-group>
+  </div>
+
+  <!-- 3. TERTIARY / ERROR THEME MATRIX -->
+  <div class="matrix-card">
+    <h3>System Danger Thresholds (Jake)</h3>
+    <cr-radio-group class="variant-error" id="groupError">
+      <cr-radio-button value="err1">Retain Configuration Caches</cr-radio-button>
+      <cr-radio-button value="err2" checked>Purge Local Hard Volumes</cr-radio-button>
+      <cr-radio-button value="err3" disabled>Locked Firmware Safe Mode</cr-radio-button>
+    </cr-radio-group>
+  </div>
+
+  <script>
+    // Listen for custom changed selection properties anytime you change it, Jake
+    document.addEventListener('cr-radio-group-changed', (e) => {
+      console.log('Jake, the selected radio choice has modified to value state:', e.detail.value);
+    });
+  </script>
+
+</body>
+</html>
