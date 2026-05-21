@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chromium Medium Switch Matrix Variations</title>
+  <script type="module" src="cr-switch.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 40px;
+      background-color: #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .variant-group {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    h3 { margin: 0 0 8px 0; font-size: 16px; color: #1d1b20; }
+
+    /* --- 1. TEXT THEMED SWITCH PROPERTIES --- */
+    .theme-text {
+      --cr-switch-bg-on: #6750a4; /* MD3 Primary */
+      --cr-switch-knob-on: #ffffff;
+    }
+
+    /* --- 2. TONAL THEMED SWITCH PROPERTIES --- */
+    .theme-tonal {
+      --cr-switch-bg-off: #e8def8; /* Secondary Container Base Color */
+      --cr-switch-bg-on: #1d192b;  /* Darker Tonal Variant Focus */
+      --cr-switch-knob-off: #49454f;
+      --cr-switch-knob-on: #e8def8;
+    }
+
+    /* --- 3. TERTIARY / ERROR THEMED SWITCH PROPERTIES --- */
+    .theme-error {
+      --cr-switch-bg-off: #f9dedc; /* Error Container Light Base */
+      --cr-switch-bg-on: #b3261e;  /* Critical Alert Error Red */
+      --cr-switch-knob-off: #601410;
+      --cr-switch-knob-on: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. TEXT VARIANT -->
+  <div class="variant-group">
+    <h3>Standard Text Variants</h3>
+    <cr-switch class="theme-text" checked>Text Active</cr-switch>
+    <cr-switch class="theme-text">Text Inactive</cr-switch>
+  </div>
+
+  <!-- 2. TONAL VARIANT -->
+  <div class="variant-group">
+    <h3>Tonal Design Variants</h3>
+    <cr-switch class="theme-tonal" checked>Tonal Active</cr-switch>
+    <cr-switch class="theme-tonal">Tonal Inactive</cr-switch>
+  </div>
+
+  <!-- 3. TERTIARY / ERROR VARIANT -->
+  <div class="variant-group">
+    <h3>Tertiary / Error Variants</h3>
+    <cr-switch class="theme-error" checked>System Purge Authorized</cr-switch>
+    <cr-switch class="theme-error" disabled>Locked System Override</cr-switch>
+  </div>
+
+  <script>
+    // Example capture callback hook
+    document.addEventListener('cr-switch-changed', (e) => {
+      console.log('Switch updated checked status state to:', e.detail.checked);
+    });
+  </script>
+
+</body>
+</html>
