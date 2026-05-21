@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chromium Breadcrumb Component Variants</title>
+  <script type="module" src="cr-breadcrumb.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 40px;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .panel {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      max-width: 500px;
+    }
+    h3 { margin: 0 0 12px 0; font-size: 14px; color: #1d1b20; text-transform: uppercase; letter-spacing: 0.5px; }
+  </style>
+</head>
+<body>
+
+  <!-- 1. TEXT VARIANT -->
+  <div class="panel">
+    <h3>Standard Text Variant</h3>
+    <cr-breadcrumb variant="text">
+      <a href="#home">Settings</a>
+      <a href="#network">Network Interface</a>
+      <span>Wi-Fi Config</span>
+    </cr-breadcrumb>
+  </div>
+
+  <!-- 2. TONAL VARIANT (Using alternative Custom Chevron Separator) -->
+  <div class="panel">
+    <h3>Tonal Variant (Custom Chevron Glyphs)</h3>
+    <cr-breadcrumb variant="tonal" separator="›">
+      <a href="#root">System Storage</a>
+      <a href="#volumes">Local Hard Volumes</a>
+      <span>Active Purge Buffer Logs</span>
+    </cr-breadcrumb>
+  </div>
+
+  <!-- 3. TERTIARY / ERROR VARIANT -->
+  <div class="panel">
+    <h3>Tertiary / Error Danger Path</h3>
+    <cr-breadcrumb variant="error" separator="→">
+      <a href="#security">Security Override</a>
+      <a href="#danger">Danger Zone</a>
+      <span>Purge Entire Framework Data</span>
+    </cr-breadcrumb>
+  </div>
+
+</body>
+</html>
