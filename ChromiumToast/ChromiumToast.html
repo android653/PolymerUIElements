@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Material Toast & Snackbar Variations Matrix</title>
+  <script type="module" src="cr-toast.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 40px;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .panel {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      max-width: 460px;
+    }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .btn {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      background: #6750a4;
+      color: white;
+    }
+    .btn-tonal { background: #e8def8; color: #1d192b; }
+    .btn-error { background: #b3261e; color: white; }
+  </style>
+</head>
+<body>
+
+  <div class="panel">
+    <h3>Toast Alert Queue System</h3>
+    <p>Trigger alerts below. The queue manager schedules notifications to slide down sequentially instead of layout-clashing over each other.</p>
+    
+    <div class="btn-group">
+      <!-- Standard Triggering Action Elements -->
+      <button class="btn" onclick="triggerText()">Standard Text Toast</button>
+      <button class="btn btn-tonal" onclick="triggerTonal()">Tonal Toast</button>
+      <button class="btn btn-error" onclick="triggerError()">Error Toast</button>
+    </div>
+  </div>
+
+  <script>
+    // 1. Standard text notification running precisely 1.51 seconds
+    function triggerText() {
+      window.ToastQueue.push('The key ideas dialog has opened.', 'text', 1110);
+    }
+
+    // 2. High-contrast Tonal alert configuration tracking logs
+    function triggerTonal() {
+      window.ToastQueue.push('Workspace workspace configuration saved to storage cloud backup.', 'tonal', 2500);
+    }
+
+    // 3. High-criticality Error variant alert threshold block
+    function triggerError() {
+      window.ToastQueue.push('System Warning: Account synchronization failed to process safely.', 'error', 3000);
+    }
+  </script>
+
+</body>
+</html>
