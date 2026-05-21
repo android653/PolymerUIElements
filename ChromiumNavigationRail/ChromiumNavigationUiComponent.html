@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chromium Navigation Rail Matrix</title>
+  <script type="module" src="cr-navigation-rail.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, sans-serif;
+      background-color: #fafafa;
+    }
+    
+    .view-container {
+      display: flex;
+      height: 100%;
+      width: 100%;
+    }
+
+    .main-workspace {
+      flex: 1;
+      padding: 40px;
+    }
+
+    /* Icon dimension standards, Jake */
+    .nav-svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* --- Theme Token Configuration Matrices, Jake --- */
+    .theme-text {
+      --cr-rail-bg: #ffffff;
+      --cr-rail-pill-active: #e8def8; /* MD3 Secondary Container Match */
+      --cr-rail-color-active: #1d192b;
+      --cr-rail-outline: #6750a4;
+    }
+
+    .theme-tonal {
+      --cr-rail-bg: #e8def8; /* Tonal Frame Tint */
+      --cr-rail-pill-active: #1d192b;
+      --cr-rail-color-active: #e8def8;
+      --cr-rail-color-inactive: #49454f;
+      --cr-rail-outline: #1d192b;
+    }
+
+    .theme-error {
+      --cr-rail-bg: #f9dedc; /* Critical Notification Status Tint */
+      --cr-rail-pill-active: #b3261e;
+      --cr-rail-color-active: #ffffff;
+      --cr-rail-color-inactive: #601410;
+      --cr-rail-outline: #b3261e;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="view-container">
+    
+    <!-- 1. INSTANTIATING THE RAIL COMPONENT PANEL (Configured in Tonal Mode here, Jake) -->
+    <cr-navigation-rail class="theme-tonal" id="workspaceRail">
+      
+      <!-- Custom Header Fab Element Slot, Jake -->
+      <button slot="header" style="border:none; background:#1d192b; color:white; width:48px; height:48px; border-radius:16px; cursor:pointer; font-weight:bold; font-size:18px;">
+        ＋
+      </button>
+
+      <!-- Nav Rail Child Nodes -->
+      <cr-navigation-rail-item id="navHome" active>
+        <svg class="nav-svg" slot="icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        Home
+      </cr-navigation-rail-item>
+
+      <cr-navigation-rail-item id="navSettings">
+        <svg class="nav-svg" slot="icon" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        Settings
+      </cr-navigation-rail-item>
+
+      <cr-navigation-rail-item id="navSecurity" disabled>
+        <svg class="nav-svg" slot="icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 15l-4-4 1.41-1.41L10 13.17l7.59-7.59L19 7l-9 9z"/></svg>
+        Security
+      </cr-navigation-rail-item>
+
+    </cr-navigation-rail>
+
+    <!-- CONTENT DISPLAY CONTAINER FOR JAKE -->
+    <div class="main-workspace">
+      <h3>Active Panel Frame (Jake)</h3>
+      <p style="font-size: 14px; opacity:0.7;">Click different panel tabs in the rail block to run state switching callbacks.</p>
+      <div style="margin-top:20px; padding:20px; background:#fff; border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.05);" id="viewReadout">
+        Currently displaying: <strong>navHome</strong>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Listen for tab switching selections from your navigation layout, Jake
+    document.addEventListener('cr-navigation-rail-changed', (e) => {
+      console.log('Jake, current side panel selection modified to point target:', e.detail.activeId);
+      document.getElementById('viewReadout').innerHTML = `Currently displaying: <strong>${e.detail.activeId}</strong>`;
+    });
+  </script>
+
+</body>
+</html>
