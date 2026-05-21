@@ -1,0 +1,86 @@
+/* Base Layout */
+.cr-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-family: system-ui, -apple-system, sans-serif;
+  user-select: none;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+/* Hide native checkbox */
+.cr-checkbox input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Checkbox container & Ripple Effect Base */
+.cr-box {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border: 2px solid;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden; /* Restrict ripple to box bounds */
+}
+
+/* Checkmark */
+.cr-box::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.27);
+}
+
+/* Checked State Checkmark */
+.cr-checkbox input:checked + .cr-box::after {
+  transform: rotate(45deg) scale(1);
+}
+
+/* 1. Primary Variant */
+.cr-primary .cr-box {
+  border-color: #0066cc;
+  background-color: transparent;
+}
+.cr-primary input:checked + .cr-box {
+  background-color: #0066cc;
+  border-color: #0066cc;
+}
+
+/* 2. Tonal Variant */
+.cr-tonal .cr-box {
+  border-color: #cce0ff;
+  background-color: #e6f0ff;
+}
+.cr-tonal input:checked + .cr-box {
+  background-color: #0066cc;
+  border-color: #0066cc;
+}
+
+/* 3. Tertiary (Error) Variant */
+.cr-tertiary .cr-box {
+  border-color: #cc3333;
+  background-color: #ffdddd;
+}
+.cr-tertiary input:checked + .cr-box {
+  background-color: #cc3333;
+  border-color: #cc3333;
+}
+
+/* Focus States */
+.cr-checkbox:focus-within {
+  outline: 2px solid #0055a6;
+  outline-offset: 2px;
+}
