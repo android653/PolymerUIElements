@@ -1,2 +1,2 @@
-# PolymerUIElements
-This project includes sample HTML/CSS/JS code for a complete Material Design interface, leveraging the full paper-elements collection. It demonstrates how to integrate everything from specialized inputs and dialogs to responsive layouts and ripple effects
+# ChromiumOSUIElements
+ChromeOS is a lightweight, cloud-first operating system developed by Google. Based on the Linux kernel, it uses the Google Chrome web browser as its primary user interface, and is designed to deliver fast boot times, seamless cloud synchronization, and robust built-in security.
